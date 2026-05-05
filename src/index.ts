@@ -1,10 +1,18 @@
 export { validateField } from './validate';
-export { validateForm, isFormValid, getFormErrors } from './schema';
+export { createSchema, validateSchema, getSchemaErrors } from './schema';
 export { minLength, maxLength, pattern, range } from './validators';
-export type {
-  Validator,
-  FieldSchema,
-  FormSchema,
-  ValidationResult,
-  FormValidationResult,
-} from './types';
+export {
+  trim,
+  lowercase,
+  uppercase,
+  digitsOnly,
+  normalizeEmail,
+} from './formatters';
+export { when, unless } from './conditions';
+export {
+  getMessage,
+  configureMessages,
+  resetMessages,
+  defaultMessages,
+} from './messages';
+export type { MessageKey, MessageFactory } from './messages';
