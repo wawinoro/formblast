@@ -36,6 +36,7 @@ export function isFormValid<T extends Record<string, unknown>>(
 
 /**
  * Collects all error messages from a FormValidationResult into a flat record.
+ * Only the first error per field is included.
  */
 export function getFormErrors<T extends Record<string, unknown>>(
   result: FormValidationResult<T>
@@ -46,6 +47,25 @@ export function getFormErrors<T extends Record<string, unknown>>(
     const fieldResult = result[key] as ValidationResult;
     if (!fieldResult.valid && fieldResult.errors.length > 0) {
       errors[key as keyof T] = fieldResult.errors[0];
+    }
+  }
+
+  return errors;
+}
+
+/**
+ * Collects all error messages from a FormValidationResult into a flat record,
+ * returning every error per field rather than just the first.
+ */
+export function getAllFormErrors<T extends Record<string, unknown>>(
+  result: FormValidationResult<T>
+): Partial<Record<keyof T, string[]>> {
+  const errors: Partial<Record<keyof T, string[]>> = {};
+
+  for (const key in result) {
+    const fieldResult = result[key] as ValidationResult;
+    if (!fieldResult.valid && fieldResult.errors.length > 0) {
+      errors[key as keyof T] = fieldResult.errors;
     }
   }
 
