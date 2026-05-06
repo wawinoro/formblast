@@ -1,18 +1,19 @@
 export { validateField } from './validate';
-export { createSchema, validateSchema, getSchemaErrors } from './schema';
+export { validateSchema, compileSchema } from './schema';
 export { minLength, maxLength, pattern, range } from './validators';
-export {
-  trim,
-  lowercase,
-  uppercase,
-  digitsOnly,
-  normalizeEmail,
-} from './formatters';
-export { when, unless } from './conditions';
-export {
-  getMessage,
-  configureMessages,
-  resetMessages,
-  defaultMessages,
-} from './messages';
-export type { MessageKey, MessageFactory } from './messages';
+export { trim, lowercase, uppercase, digitsOnly, normalizeEmail } from './formatters';
+export { applyTransforms } from './transforms';
+export { configureMessages, resetMessages, getMessage } from './messages';
+export { createPipeline } from './pipeline';
+export { createGroup, validateGroup, mergeGroupResults } from './groups';
+export { createGroupPipeline } from './groupPipeline';
+export { createSnapshot, restoreSnapshot, diffSnapshot, listSnapshots, clearSnapshots } from './snapshots';
+export { createHistory, pushHistory, undoHistory, redoHistory, getHistoryCurrent } from './history';
+export { debounceValidation, createDebounced } from './debounce';
+export { uniqueAsync, remoteValidator } from './async';
+export { crossField, crossFieldAll, crossFieldAny } from './crossField';
+export { watchField, notify } from './fieldWatch';
+export { dependentField, createDependentSchema, resolveDependencies } from './dependentFields';
+export { applyMask, stripMask } from './fieldMask';
+export { createFieldArray, validateFieldArray } from './fieldArray';
+export type { FieldArrayState } from './fieldArray';
