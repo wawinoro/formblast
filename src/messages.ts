@@ -51,3 +51,11 @@ export function getMessage(
   const factory = activeMessages[key] ?? defaultMessages.custom;
   return factory(params);
 }
+
+/**
+ * Returns a snapshot of all currently active message factories.
+ * Useful for debugging or serialising the current message configuration.
+ */
+export function getActiveMessages(): Record<MessageKey, MessageFactory> {
+  return { ...activeMessages };
+}
