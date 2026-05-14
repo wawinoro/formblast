@@ -54,6 +54,15 @@ if (hasDependents('password', depMap)) {
 }
 ```
 
+### `getAllDependents(fields, dependencyMap)`
+
+Returns a deduplicated list of all dependents for multiple fields at once. Useful when several fields change simultaneously (e.g. on form reset or bulk update).
+
+```ts
+const deps = getAllDependents(['startDate', 'password'], depMap);
+// => ['endDate', 'confirmPassword']
+```
+
 ## Integration
 
 Combine with `fieldWatch` to automatically trigger dependent re-validation when a watched field changes:
