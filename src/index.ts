@@ -1,26 +1,40 @@
 export { validateField } from './validate';
 export { minLength, maxLength, pattern, range } from './validators';
-export { applyTransforms } from './transforms';
-export { configureMessages, resetMessages, getMessage, getActiveMessages } from './messages';
-export { createSchema, validateSchema, partialValidate, mergeSchemas } from './schema';
+export { buildSchema, validateSchema, partialValidate, mergeSchemas } from './schema';
 export { trim, lowercase, uppercase, digitsOnly, normalizeEmail } from './formatters';
-export { when, unless, withCondition } from './conditions';
-export { createPipeline } from './pipeline';
-export { createGroup, validateGroup, groupSummary } from './groups';
-export { createGroupPipeline } from './groupPipeline';
-export { createSnapshot, restoreSnapshot, diffSnapshot, listSnapshots, clearSnapshots } from './snapshots';
-export { createHistory, pushHistory, undoHistory, redoHistory, clearHistory, getHistoryCurrent } from './history';
+export { configureMessages, resetMessages, getMessage, getActiveMessages } from './messages';
+export { applyTransforms } from './transforms';
+export { buildPipeline } from './pipeline';
+export { createGroup, validateGroup, mergeGroups } from './groups';
+export { buildGroupPipeline } from './groupPipeline';
+export { createSnapshot, restoreSnapshot, diffSnapshot, listSnapshots, deleteSnapshot } from './snapshots';
+export { createHistory, pushHistory, undoHistory, redoHistory, clearHistory } from './history';
 export { debounceValidation, createDebounced } from './debounce';
 export { uniqueAsync, remoteValidator } from './async';
-export { crossField, requireTogether, mutuallyExclusive } from './crossField';
+export { buildCrossField } from './crossField';
 export { watchField, notify } from './fieldWatch';
-export { dependentField, dependentRequired, dependentRange, dependentPattern } from './dependentFields';
+export { buildDependentFields } from './dependentFields';
 export { applyMask, stripMask } from './fieldMask';
-export { createFieldArray, add, remove, update, validate } from './fieldArray';
+export { buildFieldArray, add, remove, update, validate } from './fieldArray';
 export { throttleValidation } from './throttle';
 export { sanitizeValue, truncate } from './sanitize';
 export { createTouchedState, touchField, markDirty, isTouched, isDirty } from './touched';
-export { createFocusTrap } from './focusTrap';
-export { createSubmitGuard } from './submitGuard';
+export { buildFocusTrap } from './focusTrap';
+export { buildSubmitGuard } from './submitGuard';
 export { createErrorSummary, mergeErrorSummaries, filterErrorSummary } from './errorSummary';
-export type { ErrorSummary, FieldError } from './errorSummary';
+export { buildResetForm, reset, getResetCount } from './resetForm';
+export { buildDirtyFields } from './dirtyFields';
+export { buildFieldVisibility } from './fieldVisibility';
+export { createDependencyGraph, addDependency, getDependents, getOrder } from './fieldDependencyGraph';
+export { buildRevalidateDependents } from './revalidateDependents';
+export { countWords, createFieldCounter, getCount, isValid } from './fieldCounter';
+export {
+  createFieldStatusState,
+  setFieldStatus,
+  getFieldStatus,
+  applyValidationResult,
+  disableField,
+  isFieldDisabled,
+  getStatusSummary,
+} from './fieldStatus';
+export type { FieldStatus, FieldStatusState } from './fieldStatus';
