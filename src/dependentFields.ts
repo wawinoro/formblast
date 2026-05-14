@@ -72,3 +72,23 @@ export function hasDependents<T extends Record<string, unknown>>(
 ): boolean {
   return (dependencyMap[field]?.length ?? 0) > 0;
 }
+
+/**
+ * Merges two dependency maps together, combining dependent field lists
+ * for any keys that appear in both maps.
+ */
+export function mergeDependencyMaps<T extends Record<string, unknown>>(
+  mapA: DependencyMap<T>,
+  mapB: DependencyMap<T>
+): DependencyMap<T> {
+  const merged: DependencyMap<T> = { ...mapA };
+
+  for (const key of Object.keys(mapB) as (keyof T)[]) {
+    const existing = merged[key] ?? [];
+    const incoming = mapB[key] ?? [];
+    const combined = Array.from(new Set([...existing, ...incoming]));
+    merged[key] = combined as (keyof T)[];
+  }
+
+  return merged;
+}
