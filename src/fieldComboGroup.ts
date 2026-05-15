@@ -56,5 +56,17 @@ export function createFieldComboGroup<T extends Record<string, unknown>>(
     return combos[key];
   }
 
-  return { getState, validateAll, isValid, resetAll, getField };
+  /**
+   * Sets the value of a specific field by key.
+   * Useful for programmatically updating a single combo without resetting the group.
+   */
+  function setFieldValue(key: Key, value: unknown): void {
+    const field = combos[key];
+    if (!field) {
+      throw new Error(`Field "${String(key)}" does not exist in this combo group.`);
+    }
+    field.setValue(value);
+  }
+
+  return { getState, validateAll, isValid, resetAll, getField, setFieldValue };
 }
