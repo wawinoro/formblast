@@ -55,6 +55,14 @@ describe('truncate', () => {
   it('returns full string when shorter than max length', () => {
     expect(truncate(20)('hi')).toBe('hi');
   });
+
+  it('returns empty string when max length is 0', () => {
+    expect(truncate(0)('hello')).toBe('');
+  });
+
+  it('returns full string when max length equals string length', () => {
+    expect(truncate(5)('hello')).toBe('hello');
+  });
 });
 
 describe('collapseSpaces', () => {
